@@ -83,10 +83,10 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Игрок погиб!");
-        // Пока просто выводим в консоль
-        // Позже сюда добавим экран проигрыша
+        // Находим UIManager и показываем экран смерти
+        FindObjectOfType<UIManager>().ShowGameOver();
     }
+
 
     // Метод для получения текущего HP (для UI)
     public int GetCurrentHP() { return currentHP; }
