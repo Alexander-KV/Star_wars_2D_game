@@ -5,59 +5,83 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("HP интерфейс")]
+    [Header("HP игрока")]
     public Slider hpBar;
     public TextMeshProUGUI hpText;
 
-    [Header("Экран смерти")]
-    public GameObject gameOverPanel;
+    [Header("HP босса")]
+    public GameObject bossHPContainer;
+    public Slider bossHPBar;
+    public TextMeshProUGUI bossHPText;
 
-    // Ссылка на игрока
+    [Header("Экраны")]
+    public GameObject gameOverPanel;
+    public GameObject victoryPanel;
+
     private PlayerController player;
 
     void Start()
     {
-        // Находим игрока на сцене
         player = FindObjectOfType<PlayerController>();
-
-        // Скрываем экран смерти в начале
         gameOverPanel.SetActive(false);
+        victoryPanel.SetActive(false);
+        if (bossHPContainer != null)
+            bossHPContainer.SetActive(false);
 
-        // Устанавливаем максимальное значение полоски
-        hpBar.maxValue = player.maxHP;
-        hpBar.value = player.maxHP;
+        if (hpBar != null) hpBar.maxValue = player.maxHP;
     }
 
     void Update()
     {
-        // Каждый кадр обновляем полоску и текст
-        hpBar.value = player.GetCurrentHP();
-        hpText.text = "HP: " + player.GetCurrentHP() + "/" + player.maxHP;
+        if (player == null) return;
+        if (hpBar != null)
+            hpBar.value = player.GetCurrentHP();
+        if (hpText != null)
+            hpText.text = "HP: " + player.GetCurrentHP() + "/" + player.maxHP;
     }
 
-    // Этот метод вызовем из PlayerController когда игрок умирает
+    public void ShowBossHP(int maxHP)
+    {
+        if (bossHPContainer != null) bossHPContainer.SetActive(true);
+        if (bossHPBar != null)
+        {
+            bossHPBar.maxValue = maxHP;
+            bossHPBar.value = maxHP;
+        }
+    }
+
+    public void UpdateBossHP(int currentHP)
+    {
+        if (bossHPBar != null) bossHPBar.value = currentHP;
+        if (bossHPText != null) bossHPText.text = "Босс: " + currentHP;
+    }
+
+    public void HideBossHP()
+    {
+        if (bossHPContainer != null) bossHPContainer.SetActive(false);
+    }
+
     public void ShowGameOver()
     {
         gameOverPanel.SetActive(true);
-
-        // Останавливаем игру
         Time.timeScale = 0f;
     }
 
-    // Кнопка "Заново" — перезапускает сцену
+    public void ShowVictory()
+    {
+        victoryPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
     public void RestartGame()
     {
-        // Возобновляем время (важно!)
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // Кнопка "В меню" — пока просто перезапускает
-    // Позже сюда добавим переход в главное меню
     public void GoToMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainMenu");
     }
 }
-
