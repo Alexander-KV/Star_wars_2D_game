@@ -18,7 +18,6 @@ public class MenuManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton pattern - сохраняем между сценами
         if (Instance == null)
         {
             Instance = this;
@@ -29,17 +28,21 @@ public class MenuManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        // Гарантируем что время идёт нормально
+        Time.timeScale = 1f;
     }
 
     void Start()
     {
-        // Убедимся что главная панель активна при старте
+        // Гарантируем время при каждом запуске меню
+        Time.timeScale = 1f;
+
         if (mainMenuPanel != null)
             mainMenuPanel.SetActive(true);
         if (levelSelectPanel != null)
             levelSelectPanel.SetActive(false);
     }
-
     // Вызывается при нажатии на кнопки сложности
     public void SelectDifficulty(string difficulty)
     {

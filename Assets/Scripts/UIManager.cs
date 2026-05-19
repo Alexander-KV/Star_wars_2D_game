@@ -23,12 +23,14 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-        gameOverPanel.SetActive(false);
-        victoryPanel.SetActive(false);
-        if (bossHPContainer != null)
-            bossHPContainer.SetActive(false);
 
-        if (hpBar != null) hpBar.maxValue = player.maxHP;
+        // Скрываем все панели в начале
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        if (victoryPanel != null) victoryPanel.SetActive(false);
+        if (bossHPContainer != null) bossHPContainer.SetActive(false);
+
+        if (hpBar != null && player != null)
+            hpBar.maxValue = player.maxHP;
     }
 
     void Update()
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
         if (hpText != null)
             hpText.text = "HP: " + player.GetCurrentHP() + "/" + player.maxHP;
     }
+
+    // ---- Босс ----
 
     public void ShowBossHP(int maxHP)
     {
@@ -61,17 +65,21 @@ public class UIManager : MonoBehaviour
         if (bossHPContainer != null) bossHPContainer.SetActive(false);
     }
 
+    // ---- Экраны ----
+
     public void ShowGameOver()
     {
-        gameOverPanel.SetActive(true);
+        if (gameOverPanel != null) gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void ShowVictory()
     {
-        victoryPanel.SetActive(true);
+        if (victoryPanel != null) victoryPanel.SetActive(true);
         Time.timeScale = 0f;
     }
+
+    // ---- Кнопки ----
 
     public void RestartGame()
     {
@@ -81,6 +89,7 @@ public class UIManager : MonoBehaviour
 
     public void GoToMenu()
     {
+        // Обязательно возобновляем время перед переходом
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }

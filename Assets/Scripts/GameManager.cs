@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     void SpawnBoss()
     {
         if (bossPrefab == null) return;
-        Vector3 spawnPos = new Vector3(10f, 0f, 0f);
+        Vector3 spawnPos = new Vector3(6f, 0f, 0f);
         Instantiate(bossPrefab, spawnPos, Quaternion.identity);
     }
 
