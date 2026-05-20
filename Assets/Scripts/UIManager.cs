@@ -9,11 +9,6 @@ public class UIManager : MonoBehaviour
     public Slider hpBar;
     public TextMeshProUGUI hpText;
 
-    [Header("HP босса")]
-    public GameObject bossHPContainer;
-    public Slider bossHPBar;
-    public TextMeshProUGUI bossHPText;
-
     [Header("Экраны")]
     public GameObject gameOverPanel;
     public GameObject victoryPanel;
@@ -24,10 +19,8 @@ public class UIManager : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
 
-        // Скрываем все панели в начале
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         if (victoryPanel != null) victoryPanel.SetActive(false);
-        if (bossHPContainer != null) bossHPContainer.SetActive(false);
 
         if (hpBar != null && player != null)
             hpBar.maxValue = player.maxHP;
@@ -42,31 +35,6 @@ public class UIManager : MonoBehaviour
             hpText.text = "HP: " + player.GetCurrentHP() + "/" + player.maxHP;
     }
 
-    // ---- Босс ----
-
-    public void ShowBossHP(int maxHP)
-    {
-        if (bossHPContainer != null) bossHPContainer.SetActive(true);
-        if (bossHPBar != null)
-        {
-            bossHPBar.maxValue = maxHP;
-            bossHPBar.value = maxHP;
-        }
-    }
-
-    public void UpdateBossHP(int currentHP)
-    {
-        if (bossHPBar != null) bossHPBar.value = currentHP;
-        if (bossHPText != null) bossHPText.text = "Босс: " + currentHP;
-    }
-
-    public void HideBossHP()
-    {
-        if (bossHPContainer != null) bossHPContainer.SetActive(false);
-    }
-
-    // ---- Экраны ----
-
     public void ShowGameOver()
     {
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
@@ -79,8 +47,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    // ---- Кнопки ----
-
     public void RestartGame()
     {
         Time.timeScale = 1f;
@@ -89,7 +55,6 @@ public class UIManager : MonoBehaviour
 
     public void GoToMenu()
     {
-        // Обязательно возобновляем время перед переходом
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }

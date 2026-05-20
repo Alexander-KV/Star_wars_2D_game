@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
     {
         if (bossPrefab == null) return;
         Vector3 spawnPos = new Vector3(6f, 0f, 0f);
-        Instantiate(bossPrefab, spawnPos, Quaternion.identity);
+        Quaternion rotation = Quaternion.Euler(0f, 0f, 270f);
+        Instantiate(bossPrefab, spawnPos, rotation);
     }
 
     public void BossDefeated()

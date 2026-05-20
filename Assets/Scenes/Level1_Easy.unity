@@ -1426,9 +1426,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   hpBar: {fileID: 346601630}
   hpText: {fileID: 1447302993}
-  bossHPContainer: {fileID: 0}
-  bossHPBar: {fileID: 0}
-  bossHPText: {fileID: 0}
   gameOverPanel: {fileID: 1566340515}
   victoryPanel: {fileID: 0}
 --- !u!114 &1179209341

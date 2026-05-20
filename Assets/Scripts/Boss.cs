@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -20,19 +21,27 @@ public class Boss : MonoBehaviour
     private float beamTimer = 0f;
     private float spreadTimer = 0f;
 
+    [Header("HP Bar")]
+    private Slider hpBar; // перетащи BossHPBar сюда
+
     private int moveDirection = -1;
     public float moveRange = 3.5f;
     private float startY;
-
-    private UIManager uiManager;
 
     void Start()
     {
         currentHP = maxHP;
         startY = transform.position.y;
-        uiManager = FindObjectOfType<UIManager>();
-        if (uiManager != null)
-            uiManager.ShowBossHP(maxHP);
+
+        // Автоматически находим слайдер внутри босса
+        // не нужно ничего перетаскивать вручную
+        hpBar = GetComponentInChildren<Slider>();
+
+        if (hpBar != null)
+        {
+            hpBar.maxValue = maxHP;
+            hpBar.value = maxHP;
+        }
     }
 
     void Update()
@@ -97,7 +106,6 @@ public class Boss : MonoBehaviour
             float angle = startAngle + (angleRange / (bulletCount - 1)) * i;
             float rad = angle * Mathf.Deg2Rad;
             Vector2 dir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-
             GameObject bullet = Instantiate(spreadBulletPrefab,
                 transform.position, Quaternion.identity);
             bullet.GetComponent<BossBullet>().SetDirection(dir);
@@ -108,16 +116,17 @@ public class Boss : MonoBehaviour
     {
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        if (uiManager != null)
-            uiManager.UpdateBossHP(currentHP);
+
+        // Обновляем полоску
+        if (hpBar != null)
+            hpBar.value = currentHP;
+
         if (currentHP <= 0)
             Die();
     }
 
     void Die()
     {
-        if (uiManager != null)
-            uiManager.HideBossHP();
         if (GameManager.instance != null)
             GameManager.instance.BossDefeated();
         Destroy(gameObject);
