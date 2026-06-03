@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int currentHP;
 
     private bool isInvincible = false;
-    public float invincibleDuration = 1.5f;
+    public float invincibleDuration = 0f;
     private float invincibleTimer = 0f;
 
     [Header("Стрельба")]
@@ -129,13 +129,13 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Meteor") && !isInvincible)
+        if (other.CompareTag("Meteor"))
         {
             TakeDamage(20);
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("EnemyBullet") && !isInvincible)
+        if (other.CompareTag("EnemyBullet"))
         {
             BossBullet bb = other.GetComponent<BossBullet>();
             if (bb != null) TakeDamage(bb.damage);
@@ -145,11 +145,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isInvincible) return;
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        isInvincible = true;
-        invincibleTimer = invincibleDuration;
 
         if (currentHP <= 0)
             Die();
