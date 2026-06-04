@@ -2617,9 +2617,9 @@ MonoBehaviour:
   - {fileID: 1627312481364639337, guid: e786642df13eb064cab3971d93a8206a, type: 3}
   - {fileID: 1357469331871316692, guid: 3d4f157b507ad804d9c5d83bdc0f786c, type: 3}
   - {fileID: 6678266234338845401, guid: 1a630edcd051cfb4a98fa8d9c215d9e0, type: 3}
-  spawnInterval: 1.5
-  minSpeed: 2
-  maxSpeed: 5
+  spawnInterval: 3
+  minSpeed: 1
+  maxSpeed: 3
   minY: -4
   maxY: 4
 --- !u!4 &1942307611

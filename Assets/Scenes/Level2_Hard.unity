@@ -157,9 +157,9 @@ MonoBehaviour:
   - {fileID: 1627312481364639337, guid: e786642df13eb064cab3971d93a8206a, type: 3}
   - {fileID: 1357469331871316692, guid: 3d4f157b507ad804d9c5d83bdc0f786c, type: 3}
   - {fileID: 6678266234338845401, guid: 1a630edcd051cfb4a98fa8d9c215d9e0, type: 3}
-  spawnInterval: 1.5
-  minSpeed: 2
-  maxSpeed: 5
+  spawnInterval: 0.5
+  minSpeed: 10
+  maxSpeed: 20
   minY: -4
   maxY: 4
 --- !u!4 &7239938
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e2fc2ffc103b544a123af668c81d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  bossPrefab: {fileID: 8281618862202217179, guid: 7f4bbcf95708ec34f933c9d8b6df627f, type: 3}
+  bossPrefab: {fileID: 8281618862202217179, guid: a3f7e2d48d745a441b00f75c6efa4585, type: 3}
   scoreToSpawnBoss: 0
   timeToSpawnBoss: 10
 --- !u!4 &132118745
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5aee99ff128534abca21d322bec4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 10
+  speed: 15
   minY: -4
   maxY: 4
   minX: -8
@@ -648,7 +648,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.12, y: -0.05, z: -1}
-  m_LocalScale: {x: 2.8159306, y: 2.0132847, z: 5.679869}
+  m_LocalScale: {x: 2.1085222, y: 1.5075145, z: 4.252992}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1394005031}

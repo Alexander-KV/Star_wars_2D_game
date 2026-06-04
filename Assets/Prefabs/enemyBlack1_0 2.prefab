@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 7740320807038623843}
   - component: {fileID: 2971613032020798057}
   m_Layer: 0
-  m_Name: enemyBlack1_0
+  m_Name: enemyBlack1_0 2
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,15 +484,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8eb1bebbd0501446a20c0ce4d481cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss
-  maxHP: 250
-  speed: 1.5
-  normalBulletPrefab: {fileID: 9061412763822694953, guid: 97a791c29c292d545bba0d153c851eaf, type: 3}
-  beamBulletPrefab: {fileID: 9061412763822694953, guid: 97a791c29c292d545bba0d153c851eaf, type: 3}
-  spreadBulletPrefab: {fileID: 9061412763822694953, guid: 97a791c29c292d545bba0d153c851eaf, type: 3}
-  normalAttackRate: 4
-  beamAttackRate: 10
-  spreadAttackRate: 8
-  moveRange: 4
+  maxHP: 500
+  speed: 3
+  normalBulletPrefab: {fileID: 9061412763822694953, guid: dff3dca5fa973514c94003bcace2ae6c, type: 3}
+  beamBulletPrefab: {fileID: 9061412763822694953, guid: dff3dca5fa973514c94003bcace2ae6c, type: 3}
+  spreadBulletPrefab: {fileID: 9061412763822694953, guid: dff3dca5fa973514c94003bcace2ae6c, type: 3}
+  normalAttackRate: 2
+  beamAttackRate: 8
+  spreadAttackRate: 5
+  moveRange: 3
 --- !u!61 &7740320807038623843
 BoxCollider2D:
   m_ObjectHideFlags: 0

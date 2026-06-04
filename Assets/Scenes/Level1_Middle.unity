@@ -1272,9 +1272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   hpBar: {fileID: 1144972259}
   hpText: {fileID: 1148508664}
-  bossHPContainer: {fileID: 0}
-  bossHPBar: {fileID: 0}
-  bossHPText: {fileID: 0}
   gameOverPanel: {fileID: 1135464106}
   victoryPanel: {fileID: 0}
 --- !u!114 &1119708485
@@ -2175,7 +2172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e2fc2ffc103b544a123af668c81d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  bossPrefab: {fileID: 8281618862202217179, guid: 7f4bbcf95708ec34f933c9d8b6df627f, type: 3}
+  bossPrefab: {fileID: 8281618862202217179, guid: 289881ac718f608438a2da66b9694267, type: 3}
   scoreToSpawnBoss: 0
   timeToSpawnBoss: 10
 --- !u!4 &1594534898

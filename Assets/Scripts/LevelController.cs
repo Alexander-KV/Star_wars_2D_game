@@ -3,25 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
-    // Возврат в главное меню
+    // РїСЂРёРІСЏР·С‹РІР°РµРј Рє РєРЅРѕРїРєРµ "Р’ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ" РЅР° СЌРєСЂР°РЅРµ РїР°СѓР·С‹ РёР»Рё РєРѕРЅС†Р° РёРіСЂС‹
     public void BackToMainMenu()
     {
-        Debug.Log("Загрузка главного меню...");
+        Debug.Log("Р—Р°РіСЂСѓР·РєР° РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ...");
         SceneManager.LoadScene("MainMenu");
     }
 
-    // Перезапуск текущего уровня
+    // РїРµСЂРµР·Р°РїСѓСЃРєР°РµС‚ СЃС†РµРЅСѓ СЃ РЅСѓР»СЏ вЂ” СѓРґРѕР±РЅРѕ РЅР° СЌРєСЂР°РЅРµ Game Over
     public void RestartLevel()
     {
-        Debug.Log("Перезапуск уровня...");
+        Debug.Log("РџРµСЂРµР·Р°РїСѓСЃРє СѓСЂРѕРІРЅСЏ...");
         string currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
     }
 
-    // Выход из игры
+    // Р·Р°РєСЂС‹РІР°РµС‚ РїСЂРёР»РѕР¶РµРЅРёРµ, РІ СЂРµРґР°РєС‚РѕСЂРµ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ вЂ” СЌС‚Рѕ РЅРѕСЂРјР°Р»СЊРЅРѕ
     public void QuitGame()
     {
-        Debug.Log("Выход из игры");
+        Debug.Log("Р’С‹С…РѕРґ РёР· РёРіСЂС‹");
         Application.Quit();
     }
 }
